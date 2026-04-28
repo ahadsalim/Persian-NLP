@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "persian-nlp"
+version = "1.0.0"
+description = "Minimal standalone Persian NLP library — normalizer, tokenizer, and stemmer for Python 3.8+"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+keywords = ["persian", "farsi", "nlp", "tokenizer", "normalizer", "stemmer", "text-processing"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: Linguistic",
+    "Natural Language :: Persian",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage    = "https://github.com/ahadsalim/persian-nlp"
+Source      = "https://github.com/ahadsalim/persian-nlp"
+"Bug Tracker" = "https://github.com/ahadsalim/persian-nlp/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["persian_nlp*"]
+
+[tool.setuptools.package-data]
+persian_nlp = ["py.typed"]
