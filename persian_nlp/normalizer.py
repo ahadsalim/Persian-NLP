@@ -29,7 +29,6 @@ _ARABIC_TO_PERSIAN: dict[str, str] = {
     "\u0643": "\u06a9",   # ك Arabic kaf  → ک Persian kaf
     "\u064a": "\u06cc",   # ي Arabic ya   → ی Persian ya
     "\u0649": "\u06cc",   # ى Alef maqsura → ی
-    "\u0626": "\u06cc",   # ئ (ya with hamza) mapped to Persian ya in some normalisers
 }
 
 # Persian/Arabic digit mapping (only used when persian_numbers=True)

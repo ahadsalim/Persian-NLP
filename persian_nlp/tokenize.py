@@ -34,11 +34,6 @@ _SENT_BOUNDARY_RE = re.compile(
     r"\n{2,}",                          # blank line / paragraph break
 )
 
-# Pattern to detect numeric context "1.5", "2.3" etc. — avoid splitting there.
-# We post-process and re-join fragments that were incorrectly split.
-_NUMBER_SPLIT_RE = re.compile(r"^\d+$")
-
-
 def sent_tokenize(text: str) -> list[str]:
     """
     Split *text* into a list of sentences.
@@ -52,33 +47,7 @@ def sent_tokenize(text: str) -> list[str]:
     if not text:
         return []
 
-    parts = _SENT_BOUNDARY_RE.split(text)
-
-    sentences: list[str] = []
-    i = 0
-    while i < len(parts):
-        fragment = parts[i].strip()
-        if not fragment:
-            i += 1
-            continue
-
-        # Re-join if the split happened inside a decimal number like "1.5"
-        # hazm exhibits the same conservative behaviour.
-        if (
-            i + 1 < len(parts)
-            and fragment
-            and fragment[-1] == "."
-            and _NUMBER_SPLIT_RE.match(fragment[:-1])  # "1" before the "."
-        ):
-            merged = fragment + parts[i + 1].strip()
-            sentences.append(merged)
-            i += 2
-            continue
-
-        sentences.append(fragment)
-        i += 1
-
-    return sentences
+    return [part.strip() for part in _SENT_BOUNDARY_RE.split(text) if part and part.strip()]
 
 
 # ---------------------------------------------------------------------------

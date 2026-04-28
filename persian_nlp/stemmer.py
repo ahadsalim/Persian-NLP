@@ -26,8 +26,8 @@ SUFFIXES: list[str] = [
     "پذیر",
     "گری",
     "گر",
-    "ها",     # plural
     "یها",
+    "ها",     # plural
     "تر",     # comparative
     "ان",     # animate plural / agent
     "ات",     # Arabic broken plural
